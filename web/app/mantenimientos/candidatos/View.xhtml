@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCandidatosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCandidatosLabel_id}"/>
+                    <h:outputText value="#{candidatosController.selected.id}" title="#{bundle.ViewCandidatosTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewCandidatosLabel_cedula}"/>
+                    <h:outputText value="#{candidatosController.selected.cedula}" title="#{bundle.ViewCandidatosTitle_cedula}"/>
+                    <h:outputText value="#{bundle.ViewCandidatosLabel_nombre}"/>
+                    <h:outputText value="#{candidatosController.selected.nombre}" title="#{bundle.ViewCandidatosTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewCandidatosLabel_salarioAspira}"/>
+                    <h:outputText value="#{candidatosController.selected.salarioAspira}" title="#{bundle.ViewCandidatosTitle_salarioAspira}"/>
+                    <h:outputText value="#{bundle.ViewCandidatosLabel_fechaNacimiento}"/>
+                    <h:outputText value="#{candidatosController.selected.fechaNacimiento}" title="#{bundle.ViewCandidatosTitle_fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCandidatosLabel_email}"/>
+                    <h:outputText value="#{candidatosController.selected.email}" title="#{bundle.ViewCandidatosTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewCandidatosLabel_telefono}"/>
+                    <h:outputText value="#{candidatosController.selected.telefono}" title="#{bundle.ViewCandidatosTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewCandidatosLabel_resumen}"/>
+                    <h:outputText value="#{candidatosController.selected.resumen}" title="#{bundle.ViewCandidatosTitle_resumen}"/>
+                    <h:outputText value="#{bundle.ViewCandidatosLabel_estado}"/>
+                    <h:outputText value="#{candidatosController.selected.estado}" title="#{bundle.ViewCandidatosTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewCandidatosLabel_estadoCivil}"/>
+                    <h:outputText value="#{candidatosController.selected.estadoCivil}" title="#{bundle.ViewCandidatosTitle_estadoCivil}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{candidatosController.destroyAndView}" value="#{bundle.ViewCandidatosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCandidatosEditLink}"/>
+                <br />
+                <h:commandLink action="#{candidatosController.prepareCreate}" value="#{bundle.ViewCandidatosCreateLink}" />
+                <br />
+                <h:commandLink action="#{candidatosController.prepareList}" value="#{bundle.ViewCandidatosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCandidatosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

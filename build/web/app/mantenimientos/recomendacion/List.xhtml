@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRecomendacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRecomendacionEmpty}" rendered="#{recomendacionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{recomendacionController.items.rowCount > 0}">
+                    <h:outputText value="#{recomendacionController.pagination.pageFirstItem + 1}..#{recomendacionController.pagination.pageLastItem + 1}/#{recomendacionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{recomendacionController.previous}" value="#{bundle.Previous} #{recomendacionController.pagination.pageSize}" rendered="#{recomendacionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{recomendacionController.next}" value="#{bundle.Next} #{recomendacionController.pagination.pageSize}" rendered="#{recomendacionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{recomendacionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <!--
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecomendacionTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        -->
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecomendacionTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecomendacionTitle_empresa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.empresa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecomendacionTitle_puesto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.puesto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecomendacionTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecomendacionTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{recomendacionController.prepareView}" value="#{bundle.ListRecomendacionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{recomendacionController.prepareEdit}" value="#{bundle.ListRecomendacionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{recomendacionController.destroy}" value="#{bundle.ListRecomendacionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{recomendacionController.prepareCreate}" value="#{bundle.ListRecomendacionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListRecomendacionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

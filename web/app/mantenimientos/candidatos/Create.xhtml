@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pr="http://primefaces.org/ui"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCandidatosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="#{bundle.CreateCandidatosLabel_cedula}" for="cedula" />
+                    <h:inputText id="cedula" onkeypress="return isNumberKey(event,this)" p:placeholder="001-0407056-0" maxlength="11" validator="#{validator.validarCedula}" value="#{candidatosController.selected.cedula}" title="#{bundle.CreateCandidatosTitle_cedula}" required="true" requiredMessage="La Cedula no es valida">
+                        <f:ajax event="blur" execute="@this" render="cedulaError"/>
+                    </h:inputText>
+                    <h:message  id="message" for="cedulaError" />
+                    
+                    <h:outputLabel value="#{bundle.CreateCandidatosLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" onkeypress="return soloLetras(event)" value="#{candidatosController.selected.nombre}" title="#{bundle.CreateCandidatosTitle_nombre}" required="true" requiredMessage="#{bundle.CreateCandidatosRequiredMessage_nombre}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateCandidatosLabel_salarioAspira}" for="salarioAspira" />
+                    <h:inputText id="salarioAspira" onkeypress="return isNumberKey(event,this)" value="#{candidatosController.selected.salarioAspira}" title="#{bundle.CreateCandidatosTitle_salarioAspira}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateCandidatosLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <!--
+                    <h:inputText id="fechaNacimiento"  value="#{candidatosController.selected.fechaNacimiento}" title="#{bundle.CreateCandidatosTitle_fechaNacimiento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    -->
+                    
+                    <pr:calendar  id="FechaNacimiento" value="#{candidatosController.selected.fechaNacimiento}" widgetVar="fechaNacimiento" p:placeholder="2017/02/12" pattern="yyyy/mm/dd" required="true"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateCandidatosLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{candidatosController.selected.email}" title="#{bundle.CreateCandidatosTitle_email}" />
+                   
+                    <h:outputLabel value="#{bundle.CreateCandidatosLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" onkeypress="return isNumberKey(event,this)" value="#{candidatosController.selected.telefono}" title="#{bundle.CreateCandidatosTitle_telefono}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateCandidatosLabel_resumen}" for="resumen" />
+                    <h:inputTextarea id="resumen" value="#{candidatosController.selected.resumen}" title="#{bundle.CreateCandidatosTitle_resumen}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateCandidatosLabel_estado}" for="estado" />
+                    <h:selectOneRadio id="estado" value="#{candidatosController.selected.estado}" title="#{bundle.CreateCandidatosTitle_estado}" >
+                        <f:selectItems value="#{estadoCandidatoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneRadio>
+                    
+                    <h:outputLabel value="#{bundle.CreateCandidatosLabel_estadoCivil}" for="estadoCivil" />
+                    <h:selectOneMenu id="estadoCivil" value="#{candidatosController.selected.estadoCivil}" title="#{bundle.CreateCandidatosTitle_estadoCivil}" >
+                        <f:selectItems value="#{estadoCivilController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{candidatosController.create}" value="Crear" />
+                <br />
+                <br />
+                <h:commandLink action="#{candidatosController.prepareList}" value="#{bundle.CreateCandidatosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCandidatosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

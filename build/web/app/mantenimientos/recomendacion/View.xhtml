@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRecomendacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRecomendacionLabel_id}"/>
+                    <h:outputText value="#{recomendacionController.selected.id}" title="#{bundle.ViewRecomendacionTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionLabel_nombre}"/>
+                    <h:outputText value="#{recomendacionController.selected.nombre}" title="#{bundle.ViewRecomendacionTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionLabel_empresa}"/>
+                    <h:outputText value="#{recomendacionController.selected.empresa}" title="#{bundle.ViewRecomendacionTitle_empresa}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionLabel_puesto}"/>
+                    <h:outputText value="#{recomendacionController.selected.puesto}" title="#{bundle.ViewRecomendacionTitle_puesto}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionLabel_telefono}"/>
+                    <h:outputText value="#{recomendacionController.selected.telefono}" title="#{bundle.ViewRecomendacionTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionLabel_estado}"/>
+                    <h:outputText value="#{recomendacionController.selected.estado}" title="#{bundle.ViewRecomendacionTitle_estado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{recomendacionController.destroyAndView}" value="#{bundle.ViewRecomendacionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRecomendacionEditLink}"/>
+                <br />
+                <h:commandLink action="#{recomendacionController.prepareCreate}" value="#{bundle.ViewRecomendacionCreateLink}" />
+                <br />
+                <h:commandLink action="#{recomendacionController.prepareList}" value="#{bundle.ViewRecomendacionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRecomendacionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
