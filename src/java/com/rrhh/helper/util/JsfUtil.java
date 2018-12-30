@@ -17,7 +17,7 @@ public class JsfUtil {
         int i = 0;
         
         if (selectOne) {
-            items[0] = new SelectItem("", "---");
+            items[0] = new SelectItem("", "");
             i++;
         }
         for (Object x : entities) {

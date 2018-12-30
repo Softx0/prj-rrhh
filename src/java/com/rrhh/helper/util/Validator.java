@@ -22,7 +22,7 @@ import javax.inject.Inject;
  */
 @Named(value = "validator")
 @RequestScoped
-public class Validator implements Serializable{
+public class Validator implements Serializable {
 
     @Inject
     private CandidatosFacade candidatoFacade;
@@ -35,18 +35,16 @@ public class Validator implements Serializable{
     public Validator() {
     }
 
-    public void validarCedula(FacesContext faceContext, UIComponent component, 
+    public void validarCedula(FacesContext faceContext, UIComponent component,
             Object value) {
-        
+
         String cedula = value.toString();
         if (!valiCedulaDom(cedula)) {
-            throw new ValidatorException(new FacesMessage(FacesMessage
-                    .SEVERITY_ERROR, "La cedula no es valida", null));
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "La cedula no es valida", null));
         }
 
         if (!candidatoFacade.findCandidatoByCedula(cedula)) {
-            throw new ValidatorException(new FacesMessage(FacesMessage
-                    .SEVERITY_ERROR, "La cedula ya esta en uso", null));
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "La cedula ya esta en uso", null));
         }
     }
 
