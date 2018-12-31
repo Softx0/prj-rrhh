@@ -22,7 +22,6 @@
                     <h:outputLabel value="#{bundle.CreateCapacitacionesLabel_nivel}" for="nivel" />
                     <h:inputText id="nivel" value="#{capacitacionesController.selected.nivel}" title="#{bundle.CreateCapacitacionesTitle_nivel}" />
 
-
                     <h:outputLabel value="Fecha Desde:" for="finicial" />
                     <p:calendar id="startDate" value="#{capacitacionesController.selected.fechaDesde}"
                                 required="true" showOn="button" pattern ="yyyy/MM/dd"
@@ -66,6 +65,7 @@
                     <h:selectOneMenu id="nivelAcademico" value="#{capacitacionesController.selected.nivelAcademico}" title="#{bundle.CreateCapacitacionesTitle_nivelAcademico}" >
                         <f:selectItems value="#{nivelAcademicoController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{capacitacionesController.create}" value="#{bundle.CreateCapacitacionesSaveLink}" />

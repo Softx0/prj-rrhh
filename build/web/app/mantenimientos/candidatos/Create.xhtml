@@ -44,15 +44,9 @@
                                  title="#{bundle.CreateCandidatosTitle_salarioAspira}" />
 
                     <h:outputLabel value="Fecha de Nacimiento:" for="fechaNacimiento" />
-                    <!--
-                    <h:inputText id="fechaNacimiento"  value="#{candidatosController.selected.fechaNacimiento}" title="#{bundle.CreateCandidatosTitle_fechaNacimiento}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    -->
-
                     <pr:calendar  id="FechaNacimiento" value="#{candidatosController.selected.fechaNacimiento}" 
                                   widgetVar="fechaNacimiento" p:placeholder="2017/02/12" pattern="yyyy/MM/dd" 
-                                  required="true"/>
+                                  required="true" showOn="button" />
 
                     <h:outputLabel value="E-mail:" for="email" />
                     <h:inputText id="email" value="#{candidatosController.selected.email}" 
