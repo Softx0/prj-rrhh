@@ -53,6 +53,10 @@ public class TipoUsuario implements Serializable {
         this.id = id;
     }
 
+    public TipoUsuario(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -100,7 +104,7 @@ public class TipoUsuario implements Serializable {
 
     @Override
     public String toString() {
-        return ""+descripcion;
+        return "" + descripcion;
     }
-    
+
 }
