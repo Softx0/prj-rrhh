@@ -23,8 +23,10 @@ public class SessionReference {
         return facesContext;
     }
 
-    public void navigationHandlerRedirect(String ruta) {
-        facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, ruta);
+    public void navigationHandlerRedirect(String path) {
+        facesContext.getApplication()
+                .getNavigationHandler()
+                .handleNavigation(facesContext, null, path);
     }
 
     public void sessionMapPut(String key, Object object) {

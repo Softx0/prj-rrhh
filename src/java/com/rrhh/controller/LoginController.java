@@ -7,8 +7,12 @@ package com.rrhh.controller;
 
 import com.rrhh.domain.Usuario;
 import com.rrhh.ejb.UsuarioFacade;
+import com.rrhh.helper.util.SessionReference;
+import java.io.IOException;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
 
 /**
@@ -25,11 +29,65 @@ public class LoginController {
     
     @Inject
     private UsuarioFacade usuarioFacade;
-    
+
     Usuario usuario;
-    SessionReference  sessionReference;
-    
+    SessionReference sessionReference;
+
+    @PostConstruct
+    public void init() {
+        usuario = new Usuario();
+    }
+
+    public Usuario getUsuario() {
+        if (usuario == null) {
+            usuario = new Usuario();
+        }
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public LoginController() {
     }
-    
+
+    public void iniciarSesion() {
+        Usuario user;
+
+        try {
+            sessionReference = new SessionReference();
+            user = usuarioFacade.credenciales(usuario);
+
+            switch (usuario.getTipoUsuario().getDescripcion()) {
+
+                case "ADMIN":
+                    sessionReference.sessionMapPut("usuario", user);
+                    sessionReference.getFacesContext().getExternalContext()
+                            .redirect("../admin/index/adminDash/indexAdmin.xhtml");
+                    break;
+
+                case "EMPLEADO":
+                    sessionReference.sessionMapPut("usuario", user);
+                    sessionReference.navigationHandlerRedirect("/view/empleado/indexEmpleado");
+                    break;
+
+                case "CANDIDATO":
+                    sessionReference.sessionMapPut("usuario", user);
+                    sessionReference.navigationHandlerRedirect("/view/postulante/indexPostulante");
+                    break;
+
+                default:
+                    sessionReference.getFacesContext()
+                            .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                                    "Credenciales incorrectas", "error"));
+                    break;
+            }
+        } catch (IOException e) {
+            sessionReference.getFacesContext()
+                    .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                            "Credenciales incorrectas", "error"));
+        }
+    }
+
 }

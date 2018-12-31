@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Bootstrap Dashboard by Bootstrapious.com</title>
+        <title>RRHH - Login</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="robots" content="all,follow"/>
@@ -35,48 +32,53 @@ and open the template in the editor.
         <link rel="stylesheet" href="../../resources/index/css/custom.css"/>
         <!-- Favicon-->
         <link rel="shortcut icon" href="../../resources/index/img/favicon.ico"/>
-    </head>
-    <body>
+    </h:head>
+
+    <h:body>
         <div class="page login-page">
             <div class="container">
                 <div class="form-outer text-center d-flex align-items-center">
                     <div class="form-inner">
 
                         <div class="logo text-uppercase"><span>Inicia</span>
-                            <strong class="text-primary">Sesion</strong>
+                            <strong class="text-primary">Sesi&oa&oacute;n</strong>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing 
                             elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud.</p>
 
-                        <form method="get" class="text-left form-validate">
+                        <h:form class="text-left form-validate">
+
                             <div class="form-group-material">
-                                <input id="login-username" type="text" name="loginUsername" required="true" data-msg="Please enter your username" class="input-material" />
-                                <label for="login-username" class="label-material">Username</label>
+                                <h:inputText id="login-username" value="#{loginController.usuario.email}" required="true" requiredMessage="Campo Requerido" class="input-material" />
+                                <label for="login-username" class="label-material">Correo</label>
                             </div>
 
                             <div class="form-group-material">
-                                <input id="login-password" type="password" name="loginPassword" required="true" data-msg="Please enter your password" class="input-material" />
+                                <p:password id="login-password" feedback="true" value="#{loginController.usuario.password}" required="true"  requiredMessage="Este campo es requerido" class="input-material" />
                                 <label for="login-password" class="label-material">Password</label>
                             </div>
 
-                            <div class="form-group text-center"><a id="login" href="index.html" class="btn btn-primary">Login</a>
-                                <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+                            <div class="form-group text-center">
+                                <h:commandLink action="#{loginController.iniciarSesion}" class="btn btn-primary" value="Login" />
                             </div>
-                        </form>
-                        
-                        <a href="#" class="forgot-pass">Forgot Password?</a>
-                        <small>Do not have an account? </small>
-                        <a href="register.html" class="signup">Signup</a>
-                        
+                        </h:form>
+
+                        <a href="#" class="forgot-pass">Olvidaste la contrase&ntilde;a?</a>
+                        <small>Aun no tienes una cuenta? </small>
+                        <h:link outcome="register" class="signup" value="Registrate"/>
+
                     </div>
+
                     <div class="copyrights text-center">
-                        <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+                        <p>Dise&ntilde;ado por: <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
                         <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                     </div>
                 </div>
             </div>
         </div>
+
+
         <!-- JavaScript files-->
         <script src="../../resources/index/vendors/jquery.min.js"></script>
         <script src="../../resources/index/vendors/popper.min.js"></script>
@@ -88,24 +90,5 @@ and open the template in the editor.
         <script src="../../resources/index/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- Main File-->
         <script src="../../resources/index/js/front.js"></script>
-    </body>
+    </h:body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
