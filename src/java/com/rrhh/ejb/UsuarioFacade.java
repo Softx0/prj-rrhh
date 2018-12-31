@@ -6,9 +6,11 @@
 package com.rrhh.ejb;
 
 import com.rrhh.domain.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,7 +31,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         super(Usuario.class);
     }
 
-    public Usuario iniciarSesion(Usuario usuario) {
+    public Usuario credenciales(Usuario usuario) {
         Usuario user = null;
         String consulta;
 
@@ -37,7 +39,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
             consulta = "FROM Usuario u WHERE u.email = ?1 and u.pass  = ?2";
             Query query = em.createQuery(consulta);
             query.setParameter(1, usuario.getEmail());
-            query.setParameter(2, usuario.getPass());
+            query.setParameter(2, usuario.getPassword());
 
             List<Usuario> listUser = query.getResultList();
 
