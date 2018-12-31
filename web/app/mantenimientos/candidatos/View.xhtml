@@ -15,41 +15,41 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewCandidatosLabel_id}"/>
+                    <h:outputText value="Id"/>
                     <h:outputText value="#{candidatosController.selected.id}" title="#{bundle.ViewCandidatosTitle_id}"/>
-                    <h:outputText value="#{bundle.ViewCandidatosLabel_cedula}"/>
+                    <h:outputText value="Cedula"/>
                     <h:outputText value="#{candidatosController.selected.cedula}" title="#{bundle.ViewCandidatosTitle_cedula}"/>
-                    <h:outputText value="#{bundle.ViewCandidatosLabel_nombre}"/>
+                    <h:outputText value="Nombre Completo"/>
                     <h:outputText value="#{candidatosController.selected.nombre}" title="#{bundle.ViewCandidatosTitle_nombre}"/>
-                    <h:outputText value="#{bundle.ViewCandidatosLabel_salarioAspira}"/>
+                    <h:outputText value="Salario al que aspira"/>
                     <h:outputText value="#{candidatosController.selected.salarioAspira}" title="#{bundle.ViewCandidatosTitle_salarioAspira}"/>
-                    <h:outputText value="#{bundle.ViewCandidatosLabel_fechaNacimiento}"/>
+                    <h:outputText value="Fecha Nacimiento"/>
                     <h:outputText value="#{candidatosController.selected.fechaNacimiento}" title="#{bundle.ViewCandidatosTitle_fechaNacimiento}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
                     </h:outputText>
-                    <h:outputText value="#{bundle.ViewCandidatosLabel_email}"/>
+                    <h:outputText value="Email"/>
                     <h:outputText value="#{candidatosController.selected.email}" title="#{bundle.ViewCandidatosTitle_email}"/>
-                    <h:outputText value="#{bundle.ViewCandidatosLabel_telefono}"/>
+                    <h:outputText value="Contacto"/>
                     <h:outputText value="#{candidatosController.selected.telefono}" title="#{bundle.ViewCandidatosTitle_telefono}"/>
-                    <h:outputText value="#{bundle.ViewCandidatosLabel_resumen}"/>
+                    <h:outputText value="Resumen"/>
                     <h:outputText value="#{candidatosController.selected.resumen}" title="#{bundle.ViewCandidatosTitle_resumen}"/>
-                    <h:outputText value="#{bundle.ViewCandidatosLabel_estado}"/>
+                    <h:outputText value="Estado"/>
                     <h:outputText value="#{candidatosController.selected.estado}" title="#{bundle.ViewCandidatosTitle_estado}"/>
-                    <h:outputText value="#{bundle.ViewCandidatosLabel_estadoCivil}"/>
+                    <h:outputText value="Estado Civil"/>
                     <h:outputText value="#{candidatosController.selected.estadoCivil}" title="#{bundle.ViewCandidatosTitle_estadoCivil}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{candidatosController.destroyAndView}" value="#{bundle.ViewCandidatosDestroyLink}"/>
+                <h:commandLink action="#{candidatosController.destroyAndView}" value="Eliminar"/>
                 <br />
                 <br />
-                <h:link outcome="Edit" value="#{bundle.ViewCandidatosEditLink}"/>
+                <h:link outcome="Edit" value="Editar"/>
                 <br />
-                <h:commandLink action="#{candidatosController.prepareCreate}" value="#{bundle.ViewCandidatosCreateLink}" />
+                <h:commandLink action="#{candidatosController.prepareCreate}" value="Crear" />
                 <br />
-                <h:commandLink action="#{candidatosController.prepareList}" value="#{bundle.ViewCandidatosShowAllLink}"/>
+                <h:commandLink action="#{candidatosController.prepareList}" value="Volver"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ViewCandidatosIndexLink}"/>
+                <h:link outcome="/index" value="Inicio"/>
 
             </h:form>
         </ui:define>

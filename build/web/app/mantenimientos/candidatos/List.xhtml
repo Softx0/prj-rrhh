@@ -20,7 +20,7 @@
                     <h:commandLink action="#{candidatosController.previous}" value="#{bundle.Previous} #{candidatosController.pagination.pageSize}" rendered="#{candidatosController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{candidatosController.next}" value="#{bundle.Next} #{candidatosController.pagination.pageSize}" rendered="#{candidatosController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable value="#{candidatosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        
+
                         <!--
                         <h:column>
                             <f:facet name="header">
@@ -29,28 +29,28 @@
                             <h:outputText value="#{item.id}"/>
                         </h:column>
                         -->
-                        
+
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCandidatosTitle_cedula}"/>
+                                <h:outputText value="Cedula"/>
                             </f:facet>
                             <h:outputText value="#{item.cedula}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCandidatosTitle_nombre}"/>
+                                <h:outputText value="Candidato"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCandidatosTitle_salarioAspira}"/>
+                                <h:outputText value="Aspira a"/>
                             </f:facet>
                             <h:outputText value="#{item.salarioAspira}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCandidatosTitle_fechaNacimiento}"/>
+                                <h:outputText value="Fecha de Nacimiento"/>
                             </f:facet>
                             <h:outputText value="#{item.fechaNacimiento}">
                                 <f:convertDateTime pattern="yyyy/MM/dd" />
@@ -58,53 +58,56 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCandidatosTitle_email}"/>
+                                <h:outputText value="E-mail"/>
                             </f:facet>
                             <h:outputText value="#{item.email}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCandidatosTitle_telefono}"/>
+                                <h:outputText value="Contacto"/>
                             </f:facet>
                             <h:outputText value="#{item.telefono}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCandidatosTitle_resumen}"/>
+                                <h:outputText value="Resumen"/>
                             </f:facet>
                             <h:outputText value="#{item.resumen}"/>
                         </h:column>
+
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCandidatosTitle_estado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.estado.descripcion}"/>
-                        </h:column>
-                        
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCandidatosTitle_estadoCivil}"/>
+                                <h:outputText value="Estado Civil"/>
                             </f:facet>
                             <h:outputText value="#{item.estadoCivil.descripcion}"/>
                         </h:column>
-                        
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Estado"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado.descripcion}"/>
+                        </h:column>
+
+
+
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{candidatosController.prepareView}" value="#{bundle.ListCandidatosViewLink}"/>
+                            <h:commandLink action="#{candidatosController.prepareView}" value="Ver"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{candidatosController.prepareEdit}" value="#{bundle.ListCandidatosEditLink}"/>
+                            <h:commandLink action="#{candidatosController.prepareEdit}" value="Editar"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{candidatosController.destroy}" value="#{bundle.ListCandidatosDestroyLink}"/>
+                            <h:commandLink action="#{candidatosController.destroy}" value="Eliminar"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{candidatosController.prepareCreate}" value="#{bundle.ListCandidatosCreateLink}"/>
+                <h:commandLink action="#{candidatosController.prepareCreate}" value="Crear"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListCandidatosIndexLink}"/>
+                <h:link outcome="/index" value="Inicio"/>
             </h:form>
         </ui:define>
     </ui:composition>
