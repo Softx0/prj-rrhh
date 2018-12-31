@@ -41,7 +41,7 @@
                     <div class="form-inner">
 
                         <div class="logo text-uppercase"><span>Inicia</span>
-                            <strong class="text-primary">Sesi&oa&oacute;n</strong>
+                            <strong class="text-primary">Sesión</strong>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing 
                             elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -55,7 +55,11 @@
                             </div>
 
                             <div class="form-group-material">
-                                <p:password id="login-password" feedback="true" value="#{loginController.usuario.password}" required="true"  requiredMessage="Este campo es requerido" class="input-material" />
+                                <p:password id="login-password" feedback="true" 
+                                            value="#{loginController.usuario.password}" inline="true"
+                                            required="true" requiredMessage="Este campo es requerido" 
+                                            class="input-material" promptLabel="La Contraseña debe ser fuerte!" 
+                                            weakLabel="Eso no sirve" goodLabel=" Mas o menos" strongLabel="Me Gusta" />
                                 <label for="login-password" class="label-material">Password</label>
                             </div>
 
@@ -64,14 +68,14 @@
                             </div>
                         </h:form>
 
-                        <a href="#" class="forgot-pass">Olvidaste la contrase&ntilde;a?</a>
+                        <a href="#" class="forgot-pass">Olvidaste la contraseña?</a>
                         <small>Aun no tienes una cuenta? </small>
                         <h:link outcome="register" class="signup" value="Registrate"/>
 
                     </div>
 
                     <div class="copyrights text-center">
-                        <p>Dise&ntilde;ado por: <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+                        <p>Diseñado por: <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
                         <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                     </div>
                 </div>
