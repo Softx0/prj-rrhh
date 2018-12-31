@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
 
     </h:head>
-
     <h:body>
 
         <!--================Header Menu Area =================-->
@@ -25,7 +24,6 @@
             <div class="main_menu" id="mainNav">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container box_1620">
-
 
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <a class="navbar-brand logo_h" href="index.html"><img src="../../resources/index/img/logo.png" alt=""/></a>
@@ -66,30 +64,60 @@
             </div>
         </header>
         <!--================Header Menu Area =================-->
-        <br/>
-        <br/>
-        
-        <h:form>
 
+        <br/>
+        <br/>
+
+
+        <h:panelGroup id="messagePanel" layout="block">
+            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+        </h:panelGroup>
+
+        <h:form>
 
             <div class="container">
                 <div class="card">
-                    <h5 class="card-header">Featured</h5>
+                    <h5 class="card-header">Formulario de reclutamiento</h5>
                     <div class="card-body">
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
-
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email"/>
+                                <h:outputLabel value="Nombre Completo:" for="nombre" />
+                                <p:inputText id="nombre" onkeypress="return soloLetras(event)" 
+                                             value="#{candidatosController.selected.nombre}"
+                                             placeholder="John Doe" class="form-control"
+                                             title="#{bundle.CreateCandidatosTitle_nombre}" 
+                                             required="true" requiredMessage="Este campo es requerido*"/>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">Password</label>
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password"/>
+                                <h:outputLabel value="Cedula:" for="cedula" />
+                                <p:inputMask id="cedula" mask="999-9999999-9" onkeypress="return isNumberKey(event, this)" 
+                                             placeholder="001-0407056-0" maxlength="11" 
+                                             validator="#{validator.validarCedula}" class="form-control"
+                                             value="#{candidatosController.selected.cedula}" 
+                                             title="#{bundle.CreateCandidatosTitle_cedula}" 
+                                             required="true" requiredMessage="La Cedula no es valida">
+                                    <f:ajax event="blur" execute="@this" render="cedulaError"/>
+                                </p:inputMask>
+                                <h:message  id="message" for="cedulaError" />
                             </div>
 
                         </div>
-
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <h:outputLabel value="E-mail:" for="email" />
+                                <h:inputText id="email" value="#{candidatosController.selected.email}" 
+                                             class="form-control"
+                                             title="#{bundle.CreateCandidatosTitle_email}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <h:outputLabel value="Telefono/Celular:" for="telefono" />
+                                <p:inputMask id="telefono" mask="(999) 999-9999" onkeypress="return isNumberKey(event, this)" 
+                                             value="#{candidatosController.selected.telefono}" class="form-control"
+                                             title="#{bundle.CreateCandidatosTitle_telefono}" />
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="inputAddress">Address</label>
                             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"/>
