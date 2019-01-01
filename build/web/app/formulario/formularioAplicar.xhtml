@@ -136,7 +136,7 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-8">
                                 <h:outputLabel value="Resumen:" for="resumen" />
                                 <br />
                                 <p:inputTextarea id="resumen" value="#{candidatosController.selected.resumen}"
@@ -146,27 +146,79 @@
                                 <h:outputText id="display" />
                             </div>
 
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Competencias" for="competencia" />
+                                <br />
+                                <h:selectManyMenu id="competencia" value="#{competenciaCandidatoController.selected.competencia}" title="#{bundle.CreateCompetenciaCandidatoTitle_competencia}" >
+                                    <f:selectItems value="#{competenciasController.itemsAvailableSelectMany}"/>
+                                </h:selectManyMenu>
+                            </div>
+
+                        </div>
+
+
+                        <h5 class="card-header">Ultima Capacitacion</h5>
+                        <br/>
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Titulo Otorgado" for="titulo" />
+                                <h:inputText id="titulo" value="#{capacitacionesController.selected.titulo}" 
+                                             title="#{bundle.CreateCapacitacionesTitle_titulo}" class="form-control"
+                                             required="true" requiredMessage="Este campo es requerido"/>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Fecha Desde" for="finicial" />
+                                <br/>
+                                <p:calendar id="startDate" value="#{capacitacionesController.selected.fechaDesde}"
+                                            required="true" pattern ="yyyy/MM/dd" showOn="button"
+                                            requiredMessage="La Fecha Inicial es requerida!">
+                                    <p:ajax event="dateSelect" update="endDate" rendered="finicialError"/>
+                                </p:calendar>
+                                <h:message  id="messageFinicial" for="finicialError" />
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Fecha Final" for="ffinal" />
+                                <br/>
+                                <p:calendar id="endDate" value="#{capacitacionesController.selected.fechaHasta}" 
+                                            pattern="yyyy/MM/dd" showOn="button"
+                                            mindate="#{capacitacionesController.selected.fechaDesde}"
+                                            required="true" requiredMessage="La Fecha Final es requerida!">
+                                    <f:attribute name="startDate" value="#{capacitacionesController.selected.fechaDesde}" />
+                                    <f:validator validatorId="primeDateRangeValidator" />
+                                    <f:ajax event="blur" execute="@this" render="ffinalError"/>
+                                </p:calendar>
+                                <h:message  id="messageFfinal" for="ffinalError" />
+                            </div>
 
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputCity">City</label>
-                                <input type="text" class="form-control" id="inputCity"/>
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Institucion" for="institucion" />
+                                <h:inputText id="institucion" class="form-control"
+                                             value="#{capacitacionesController.selected.institucion}" 
+                                             title="#{bundle.CreateCapacitacionesTitle_institucion}" />
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="inputState">State</label>
-                                <select id="inputState" class="form-control">
-                                    <option>Choose...</option>
-                                    <option>...</option>
-                                </select>
+                                <h:outputLabel value="Nivel Academico" for="nivelAcademico" />
+                                <h:selectOneMenu id="nivelAcademico" value="#{capacitacionesController.selected.nivelAcademico}" 
+                                                 title="#{bundle.CreateCapacitacionesTitle_nivelAcademico}"
+                                                 class="form-control">
+                                    <f:selectItems value="#{nivelAcademicoController.itemsAvailableSelectOne}"/>
+                                </h:selectOneMenu>
                             </div>
+                        </div>
 
-                            <div class="form-group col-md-2">
-                                <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control" id="inputZip"/>
-                            </div>
+                        <h5 class="card-header">Experiencia Laboral relevante</h5>
+                        <br/>
+
+                        <div class="form-row">
+
 
                         </div>
 
