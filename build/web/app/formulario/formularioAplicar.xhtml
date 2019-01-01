@@ -141,7 +141,7 @@
                                 <br />
                                 <p:inputTextarea id="resumen" value="#{candidatosController.selected.resumen}"
                                                  counter="display" maxlength="200" counterTemplate="{0} Caracteres restantes."
-                                                 cols="80" rows="3" autoResize="false" />
+                                                 cols="75" rows="3" autoResize="false" />
                                 <br />
                                 <h:outputText id="display" />
                             </div>
@@ -149,9 +149,12 @@
                             <div class="form-group col-md-4">
                                 <h:outputLabel value="Competencias" for="competencia" />
                                 <br />
-                                <h:selectManyMenu id="competencia" value="#{competenciaCandidatoController.selected.competencia}" title="#{bundle.CreateCompetenciaCandidatoTitle_competencia}" >
+                                <h:selectManyListbox id="competencia" 
+                                                  value="#{competenciaCandidatoController.selected.competencia}" 
+                                                  title="#{bundle.CreateCompetenciaCandidatoTitle_competencia}"
+                                                  class="form-control">
                                     <f:selectItems value="#{competenciasController.itemsAvailableSelectMany}"/>
-                                </h:selectManyMenu>
+                                </h:selectManyListbox>
                             </div>
 
                         </div>
