@@ -7,22 +7,16 @@ package com.rrhh.controller;
 
 import com.rrhh.ejb.CandidatosFacade;
 import com.rrhh.ejb.CapacitacionCandidatoFacade;
-import com.rrhh.ejb.CapacitacionesFacade;
 import com.rrhh.ejb.CompetenciaCandidatoFacade;
-import com.rrhh.ejb.CompetenciasFacade;
-import com.rrhh.ejb.ExperienciaLaboralFacade;
 import com.rrhh.ejb.ExplaboralCandidatoFacade;
 import com.rrhh.ejb.IdiomaCandidatoFacade;
-import com.rrhh.ejb.IdiomasFacade;
 import com.rrhh.ejb.RecomendacionCandidatoFacade;
-import com.rrhh.ejb.RecomendacionFacade;
 import com.rrhh.ejb.UsuarioFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import com.rrhh.domain.*;
 import com.rrhh.helper.util.JsfUtil;
-import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -38,27 +32,17 @@ public class FormController implements Serializable {
     private CandidatosFacade candidatosFacade;
 
     @Inject
-    private CapacitacionesFacade capacitacionesFacade;
-    @Inject
     private CapacitacionCandidatoFacade capacitacionCandidatoFacade;
 
-    @Inject
-    private CompetenciasFacade competenciaFacade;
     @Inject
     private CompetenciaCandidatoFacade competenciaCandidatoFacade;
 
     @Inject
-    private ExperienciaLaboralFacade experienciaLaboralFacade;
-    @Inject
     private ExplaboralCandidatoFacade expLaboralCandidatoFacade;
 
     @Inject
-    private IdiomasFacade idiomasFacade;
-    @Inject
     private IdiomaCandidatoFacade idiomaCandidatoFacade;
 
-    @Inject
-    private RecomendacionFacade recomendacionFacade;
     @Inject
     private RecomendacionCandidatoFacade recomendacionCandidatoFacade;
 
@@ -84,12 +68,11 @@ public class FormController implements Serializable {
 //   Idiomas idiomasList;
     Recomendacion recomendacionesList;
 
-    Escrito escrito;
-    EstadoCivil estadoCivil;
-    Hablado hablado;
-    NivelAcademico nivelAcademico;
-    Puestos puesto;
-
+//    Escrito escrito;
+//    EstadoCivil estadoCivil;
+//    Hablado hablado;
+//    NivelAcademico nivelAcademico;
+//    Puestos puesto;
     Usuario usuario;
     String emailUsuario;
 
@@ -169,14 +152,14 @@ public class FormController implements Serializable {
         this.recomendacionCandidato = recomendacionCandidato;
     }
 
-//    public Capacitaciones[] getCapacitacionesList() {
-//        return capacitacionesList;
-//    }
-//
-//    public void setCapacitacionesList(Capacitaciones[] capacitacionesList) {
-//        this.capacitacionesList = capacitacionesList;
-//    }
-//
+    public Capacitaciones getCapacitacionesList() {
+        return capacitacionesList;
+    }
+
+    public void setCapacitacionesList(Capacitaciones capacitacionesList) {
+        this.capacitacionesList = capacitacionesList;
+    }
+
     public Competencias[] getCompetenciasList() {
         return competenciasList;
     }
@@ -184,14 +167,14 @@ public class FormController implements Serializable {
     public void setCompetenciasList(Competencias[] competenciasList) {
         this.competenciasList = competenciasList;
     }
-//
-//    public ExperienciaLaboral[] getExperienciaLaboralList() {
-//        return experienciaLaboralList;
-//    }
-//
-//    public void setExperienciaLaboralList(ExperienciaLaboral[] experienciaLaboralList) {
-//        this.experienciaLaboralList = experienciaLaboralList;
-//    }
+
+    public ExperienciaLaboral getExperienciaLaboralList() {
+        return experienciaLaboralList;
+    }
+
+    public void setExperienciaLaboralList(ExperienciaLaboral experienciaLaboralList) {
+        this.experienciaLaboralList = experienciaLaboralList;
+    }
 
     public Idiomas[] getIdiomasList() {
         return idiomasList;
@@ -200,55 +183,54 @@ public class FormController implements Serializable {
     public void setIdiomasList(Idiomas[] idiomasList) {
         this.idiomasList = idiomasList;
     }
-//
-//    public Recomendacion[] getRecomendacionesList() {
-//        return recomendacionesList;
+
+    public Recomendacion getRecomendacionesList() {
+        return recomendacionesList;
+    }
+
+    public void setRecomendacionesList(Recomendacion recomendacionesList) {
+        this.recomendacionesList = recomendacionesList;
+    }
+
+//    public Escrito getEscrito() {
+//        return escrito;
 //    }
 //
-//    public void setRecomendacionesList(Recomendacion[] recomendacionesList) {
-//        this.recomendacionesList = recomendacionesList;
+//    public void setEscrito(Escrito escrito) {
+//        this.escrito = escrito;
 //    }
-
-    public Escrito getEscrito() {
-        return escrito;
-    }
-
-    public void setEscrito(Escrito escrito) {
-        this.escrito = escrito;
-    }
-
-    public EstadoCivil getEstadoCivil() {
-        return estadoCivil;
-    }
-
-    public void setEstadoCivil(EstadoCivil estadoCivil) {
-        this.estadoCivil = estadoCivil;
-    }
-
-    public Hablado getHablado() {
-        return hablado;
-    }
-
-    public void setHablado(Hablado hablado) {
-        this.hablado = hablado;
-    }
-
-    public NivelAcademico getNivelAcademico() {
-        return nivelAcademico;
-    }
-
-    public void setNivelAcademico(NivelAcademico nivelAcademico) {
-        this.nivelAcademico = nivelAcademico;
-    }
-
-    public Puestos getPuesto() {
-        return puesto;
-    }
-
-    public void setPuesto(Puestos puesto) {
-        this.puesto = puesto;
-    }
-
+//
+//    public EstadoCivil getEstadoCivil() {
+//        return estadoCivil;
+//    }
+//
+//    public void setEstadoCivil(EstadoCivil estadoCivil) {
+//        this.estadoCivil = estadoCivil;
+//    }
+//
+//    public Hablado getHablado() {
+//        return hablado;
+//    }
+//
+//    public void setHablado(Hablado hablado) {
+//        this.hablado = hablado;
+//    }
+//
+//    public NivelAcademico getNivelAcademico() {
+//        return nivelAcademico;
+//    }
+//
+//    public void setNivelAcademico(NivelAcademico nivelAcademico) {
+//        this.nivelAcademico = nivelAcademico;
+//    }
+//
+//    public Puestos getPuesto() {
+//        return puesto;
+//    }
+//
+//    public void setPuesto(Puestos puesto) {
+//        this.puesto = puesto;
+//    }
     public Usuario getUsuario() {
         if (usuario == null) {
             usuario = new Usuario();
@@ -305,10 +287,10 @@ public class FormController implements Serializable {
             recomendacionCandidatoFacade.create(recomendacionCandidato);
 
             usuario.setEmail(emailUsuario);
-            usuario.setTipoUsuario(new TipoUsuario("CANDIDATO"));
+            usuario.setTipoUsuario(new TipoUsuario(3));
             usuarioFacade.create(usuario);
 
-            JsfUtil.addSuccessMessage("Candidato Creado con Exito!!!");
+            JsfUtil.addSuccessMessage("Formulario enviado con Exito!!!");
 
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, "El candidato no fue creado!" + e);
