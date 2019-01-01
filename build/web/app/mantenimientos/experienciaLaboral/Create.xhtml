@@ -18,33 +18,20 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateExperienciaLaboralLabel_empresa}" for="empresa" />
                     <h:inputText id="empresa" value="#{experienciaLaboralController.selected.empresa}" title="#{bundle.CreateExperienciaLaboralTitle_empresa}" required="true" requiredMessage="#{bundle.CreateExperienciaLaboralRequiredMessage_empresa}"/>
+
                     <h:outputLabel value="#{bundle.CreateExperienciaLaboralLabel_puestoOcupado}" for="puestoOcupado" />
                     <h:inputText id="puestoOcupado" value="#{experienciaLaboralController.selected.puestoOcupado}" title="#{bundle.CreateExperienciaLaboralTitle_puestoOcupado}" />
 
-
-                    <h:outputLabel value="#{bundle.CreateExperienciaLaboralLabel_fechaDesde}" for="fechaDesde" />
-                    <!--
-                    <h:inputText id="fechaDesde" value="#{experienciaLaboralController.selected.fechaDesde}" title="#{bundle.CreateExperienciaLaboralTitle_fechaDesde}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    -->
-
-                    <p:calendar id="startDate" value="#{experienciaLaboralController.selected.fechaDesde}"
+                    <h:outputLabel value="Fecha Desde" for="fechaDesde" />
+                    <p:calendar id="fechaDesde" value="#{experienciaLaboralController.selected.fechaDesde}"
                                 required="true" showOn="button" pattern ="yyyy/MM/dd"
                                 requiredMessage="La Fecha Inicial es requerida!">
-                        <p:ajax event="dateSelect" update="endDate" rendered="finicialError"/>
+                        <p:ajax event="dateSelect" update="fechaHasta" rendered="finicialError"/>
                     </p:calendar>
                     <h:message  id="messageFinicial" for="finicialError" />
 
-
-                    <h:outputLabel value="#{bundle.CreateExperienciaLaboralLabel_fechaHasta}" for="fechaHasta" />
-                    <!--
-                    <h:inputText id="fechaHasta" value="#{experienciaLaboralController.selected.fechaHasta}" title="#{bundle.CreateExperienciaLaboralTitle_fechaHasta}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    -->
-
-                    <p:calendar id="endDate" value="#{experienciaLaboralController.selected.fechaHasta}" 
+                    <h:outputLabel value="Fecha Hasta" for="fechaHasta" />
+                    <p:calendar id="fechaHasta" value="#{experienciaLaboralController.selected.fechaHasta}" 
                                 showOn="button" pattern="yyyy/MM/dd" 
                                 mindate="#{experienciaLaboralController.selected.fechaDesde}"
                                 required="true" requiredMessage="La Fecha Final es requerida!">
@@ -53,7 +40,6 @@
                         <f:ajax event="blur" execute="@this" render="ffinalError"/>
                     </p:calendar>
                     <h:message  id="messageFfinal" for="ffinalError" />
-
 
 
                     <h:outputLabel value="#{bundle.CreateExperienciaLaboralLabel_salario}" for="salario" />

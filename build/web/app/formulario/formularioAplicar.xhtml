@@ -106,57 +106,80 @@
                             <div class="form-group col-md-4">
                                 <h:outputLabel value="Fecha de Nacimiento:" for="fechaNacimiento" />
                                 <p:calendar  id="FechaNacimiento" value="#{candidatosController.selected.fechaNacimiento}" 
-                                             showOn="button" pattern="yyyy/MM/dd" required="true" />
+                                             showOn="button" pattern="yyyy/MM/dd" required="true"
+                                             placeholder="1995/05/25"/>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <h:outputLabel value="E-mail:" for="email" />
-                                <h:inputText id="email" value="#{candidatosController.selected.email}" 
-                                             class="form-control"
+                                <p:inputText id="email" value="#{candidatosController.selected.email}" 
+                                             class="form-control" placeholder="johndoe@email.com"
                                              title="#{bundle.CreateCandidatosTitle_email}" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <h:outputLabel value="Telefono/Celular:" for="telefono" />
                                 <p:inputMask id="telefono" mask="(999) 999-9999" onkeypress="return isNumberKey(event, this)" 
-                                             value="#{candidatosController.selected.telefono}" class="form-control"
+                                             value="#{candidatosController.selected.telefono}" 
+                                             class="form-control" placeholder="829 291-1225"
                                              title="#{bundle.CreateCandidatosTitle_telefono}" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <h:outputLabel value="Estado Civil" for="estadoCivil" />
-                                <h:selectOneMenu id="estadoCivil" value="#{candidatosController.selected.estadoCivil}" 
+                                <h:selectOneMenu id="estadoCivil" label="SELECCIONE" value="#{candidatosController.selected.estadoCivil}" 
                                                  title="#{bundle.CreateCandidatosTitle_estadoCivil}"
                                                  class="form-control" >
                                     <f:selectItems value="#{estadoCivilController.itemsAvailableSelectOne}"/>
                                 </h:selectOneMenu>
                             </div>
+
+
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-12">
                                 <h:outputLabel value="Resumen:" for="resumen" />
                                 <br />
                                 <p:inputTextarea id="resumen" value="#{candidatosController.selected.resumen}"
+                                                 placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing 
+                                                 elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                                 Ut enim ad minim veniam, quis nostrud."
                                                  counter="display" maxlength="200" counterTemplate="{0} Caracteres restantes."
-                                                 cols="75" rows="3" autoResize="false" />
+                                                 cols="115" rows="3" autoResize="false" />
                                 <br />
                                 <h:outputText id="display" />
                             </div>
 
-                            <div class="form-group col-md-4">
-                                <h:outputLabel value="Competencias" for="competencia" />
-                                <br />
-                                <h:selectManyListbox id="competencia" 
-                                                  value="#{competenciaCandidatoController.selected.competencia}" 
-                                                  title="#{bundle.CreateCompetenciaCandidatoTitle_competencia}"
-                                                  class="form-control">
-                                    <f:selectItems value="#{competenciasController.itemsAvailableSelectMany}"/>
-                                </h:selectManyListbox>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <h:outputLabel value="Idiomas" for="idioma" />
+                                <br/>
+                                <p:selectCheckboxMenu id="idioma" filter="true" filterMatchMode="startsWith"
+                                                      label="Idiomas" class="form-control"
+                                                      value="#{idiomaCandidatoController.selected.idioma}" 
+                                                      title="#{bundle.CreateIdiomaCandidatoTitle_idioma}" >
+                                    <f:selectItems value="#{idiomasController.itemsAvailableSelectOne}"/>
+                                </p:selectCheckboxMenu>
                             </div>
 
+                            <div class="form-group col-md-6">
+                                <h:outputLabel value="Competencias" for="competencia" />
+                                <br />
+                                <p:selectCheckboxMenu id="competencia" filter="true" filterMatchMode="startsWith"
+                                                      label="Competencias"
+                                                      value="#{competenciaCandidatoController.selected.competencia}" 
+
+                                                      title="#{bundle.CreateCompetenciaCandidatoTitle_competencia}"
+
+                                                      class="form-control">
+
+                                    <f:selectItems value="#{competenciasController.itemsAvailableSelectMany}"/>
+                                </p:selectCheckboxMenu>
+                            </div>
                         </div>
 
 
@@ -167,34 +190,36 @@
 
                             <div class="form-group col-md-4">
                                 <h:outputLabel value="Titulo Otorgado" for="titulo" />
-                                <h:inputText id="titulo" value="#{capacitacionesController.selected.titulo}" 
-                                             title="#{bundle.CreateCapacitacionesTitle_titulo}" class="form-control"
+                                <p:inputText id="titulo" value="#{capacitacionesController.selected.titulo}" 
+                                             title="#{bundle.CreateCapacitacionesTitle_titulo}" 
+                                             class="form-control" placeholder="Lic. en Informatica "
                                              required="true" requiredMessage="Este campo es requerido"/>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <h:outputLabel value="Fecha Desde" for="finicial" />
                                 <br/>
-                                <p:calendar id="startDate" value="#{capacitacionesController.selected.fechaDesde}"
+                                <p:calendar id="finicial" value="#{capacitacionesController.selected.fechaDesde}"
                                             required="true" pattern ="yyyy/MM/dd" showOn="button"
+                                            placeholder="2016/11/26"
                                             requiredMessage="La Fecha Inicial es requerida!">
-                                    <p:ajax event="dateSelect" update="endDate" rendered="finicialError"/>
+                                    <p:ajax event="dateSelect" update="ffinal" rendered="finicialError"/>
                                 </p:calendar>
-                                <h:message  id="messageFinicial" for="finicialError" />
+                                <h:message  id="messageFinicial1" for="finicialError" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <h:outputLabel value="Fecha Final" for="ffinal" />
                                 <br/>
-                                <p:calendar id="endDate" value="#{capacitacionesController.selected.fechaHasta}" 
-                                            pattern="yyyy/MM/dd" showOn="button"
+                                <p:calendar id="ffinal" value="#{capacitacionesController.selected.fechaHasta}" 
+                                            pattern="yyyy/MM/dd" showOn="button" placeholder="2016/12/25"
                                             mindate="#{capacitacionesController.selected.fechaDesde}"
                                             required="true" requiredMessage="La Fecha Final es requerida!">
                                     <f:attribute name="startDate" value="#{capacitacionesController.selected.fechaDesde}" />
                                     <f:validator validatorId="primeDateRangeValidator" />
                                     <f:ajax event="blur" execute="@this" render="ffinalError"/>
                                 </p:calendar>
-                                <h:message  id="messageFfinal" for="ffinalError" />
+                                <h:message  id="messageFfinal1" for="ffinalError" />
                             </div>
 
                         </div>
@@ -202,14 +227,15 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <h:outputLabel value="Institucion" for="institucion" />
-                                <h:inputText id="institucion" class="form-control"
+                                <p:inputText id="institucion" class="form-control"
+                                             placeholder="UTESA"
                                              value="#{capacitacionesController.selected.institucion}" 
                                              title="#{bundle.CreateCapacitacionesTitle_institucion}" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <h:outputLabel value="Nivel Academico" for="nivelAcademico" />
-                                <h:selectOneMenu id="nivelAcademico" value="#{capacitacionesController.selected.nivelAcademico}" 
+                                <h:selectOneMenu id="nivelAcademico" label="SELECCIONE" value="#{capacitacionesController.selected.nivelAcademico}" 
                                                  title="#{bundle.CreateCapacitacionesTitle_nivelAcademico}"
                                                  class="form-control">
                                     <f:selectItems value="#{nivelAcademicoController.itemsAvailableSelectOne}"/>
@@ -221,8 +247,128 @@
                         <br/>
 
                         <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Empresa" for="empresa" />
+                                <p:inputText id="empresa" value="#{experienciaLaboralController.selected.empresa}" 
+                                             title="#{bundle.CreateExperienciaLaboralTitle_empresa}" 
+                                             placeholder="Empresa X" class="form-control"
+                                             required="true" requiredMessage="Campo requerido!"/>
+                            </div>
 
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Puesto Ocupado" for="puestoOcupado" />
+                                <p:inputText id="puestoOcupado" 
+                                             value="#{experienciaLaboralController.selected.puestoOcupado}" 
+                                             placeholder="Project Manager" class="form-control"
+                                             title="#{bundle.CreateExperienciaLaboralTitle_puestoOcupado}" />
+                            </div>
 
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Pais" for="pais" />
+                                <p:inputText id="pais" onkeypress="return soloLetras(event)" 
+                                             value="#{experienciaLaboralController.selected.pais}" 
+                                             placeholder="Holanda" class="form-control"
+                                             title="#{bundle.CreateExperienciaLaboralTitle_pais}" />
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Fecha Desde" for="fechaDesde" />
+                                <br/>
+                                <p:calendar id="fechaDesde" value="#{experienciaLaboralController.selected.fechaDesde}"
+                                            required="true" showOn="button" pattern ="yyyy/MM/dd"
+                                            placeholder="2018/10/02"
+                                            requiredMessage="La Fecha Inicial es requerida!">
+                                    <p:ajax event="dateSelect" update="fechaHasta" rendered="finicialError"/>
+                                </p:calendar>
+                                <h:message  id="messageFinicial" for="finicialError" />
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Fecha Hasta" for="fechaHasta" />
+                                <br/>
+                                <p:calendar id="fechaHasta" value="#{experienciaLaboralController.selected.fechaHasta}" 
+                                            showOn="button" pattern="yyyy/MM/dd" placeholder="2018/12/02"
+                                            mindate="#{experienciaLaboralController.selected.fechaDesde}"
+                                            required="true" requiredMessage="La Fecha Final es requerida!">
+
+                                    <f:attribute name="startDate" value="#{experienciaLaboralController.selected.fechaDesde}" />
+                                    <f:validator validatorId="primeDateRangeValidator" />
+                                    <f:ajax event="blur" execute="@this" render="ffinalError"/>
+
+                                </p:calendar>
+                                <h:message  id="messageFfinal" for="ffinalError" />
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Salario" for="salario" />
+                                <p:inputText id="salario" onkeypress="return isNumberKey(event, this)" 
+                                             value="#{experienciaLaboralController.selected.salario}" 
+                                             placeholder="60000" class="form-control"
+                                             title="#{bundle.CreateExperienciaLaboralTitle_salario}" />
+                            </div>
+
+                        </div>
+
+                        <h5 class="card-header">Recomendacion</h5>
+                        <br/>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <h:outputLabel value="Nombre Completo" for="nombre" />
+                                <p:inputText id="nombre" onkeypress="return soloLetras(event)" value="#{recomendacionController.selected.nombre}" title="#{bundle.CreateRecomendacionTitle_nombre}" 
+                                             class="form-control" placeholder="John Doe"
+                                             required="true" requiredMessage="Campo requerido"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <h:outputLabel value="Empresa" for="empresa" />
+                                <p:inputText id="empresa" value="#{recomendacionController.selected.empresa}" 
+                                             class="form-control" placeholder="Organizacion X"
+                                             title="#{bundle.CreateRecomendacionTitle_empresa}" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <h:outputLabel value="Puesto" for="puesto" />
+                                <p:inputText id="puesto" value="#{recomendacionController.selected.puesto}" 
+                                             class="form-control" placeholder="Arquitecto de Software Empresarial"
+                                             title="#{bundle.CreateRecomendacionTitle_puesto}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <h:outputLabel value="Contacto" for="telefono" />
+                                <p:inputMask id="telefono" onkeypress="return isNumberKey(event, this)" value="#{recomendacionController.selected.telefono}" title="#{bundle.CreateRecomendacionTitle_telefono}" 
+                                             class="form-control" placeholder="(809) 829 4654" mask="(999)-999-9999"
+                                             required="true" requiredMessage="Campo requerido"/>
+                            </div>
+                        </div>
+
+                        <h5 class="card-header">Credenciales</h5>
+                        <br/>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+
+                                <h:outputLabel value="Repita el correo" for="email" />
+                                <p:inputText id="email" value="#{usuarioController.selected.email}"
+                                             placeholder="johndoe@email.com" class="form-control"
+                                             title="#{bundle.CreateUsuarioTitle_email}" />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Contraseña" for="password" />
+                                <p:password id="password" value="#{usuarioController.selected.password}" 
+                                            placeholder="***************" inline="true" feedback="true"
+                                            promptLabel="La Contraseña debe ser fuerte!" class="form-control" 
+                                            weakLabel="Eso no sirve" goodLabel=" Mas o menos" strongLabel="Me Gusta"
+                                            title="#{bundle.CreateUsuarioTitle_password}" />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <h:outputLabel value="Repite la Contraseña" for="password1" />
+                                <p:password id="password1" value="#{usuarioController.selected.password}" 
+                                            placeholder="***************" match="password" class="form-control"
+                                            title="#{bundle.CreateUsuarioTitle_password}" />
+                            </div>
                         </div>
 
                         <div class="form-group">
