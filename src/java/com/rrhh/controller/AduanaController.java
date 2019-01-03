@@ -23,9 +23,6 @@ public class AduanaController {
     SessionReference sessionReference;
     Usuario usuario;
 
-    /**
-     * Creates a new instance of AduanaController
-     */
     public AduanaController() {
     }
 
@@ -41,7 +38,6 @@ public class AduanaController {
             }
 
         } catch (IOException e) {
-
             JsfUtil.addErrorMessage(e, "Ha ocurrido un error!" + e);
         }
     }
