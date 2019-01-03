@@ -34,7 +34,7 @@ public class CandidatosFacade extends AbstractFacade<Candidatos> {
         super(Candidatos.class);
     }
     
-    public boolean findCandidatoByCedula(String cedula){
+    public boolean findCandidatoCedula(String cedula){
         String consulta;
         try {
             
@@ -53,6 +53,23 @@ public class CandidatosFacade extends AbstractFacade<Candidatos> {
        return true;
     }
     
-    
+    public Candidatos findCandidatoEmail(String email){
+        Candidatos candidato = null;
+        String consulta;
+        try {
+            consulta = "FROM Candidatos u WHERE u.email = ?1";
+            Query query = em.createQuery(consulta);
+            query.setParameter(1, email);
+            
+            List<Candidatos> listCandidato = query.getResultList();
+            
+            if(!listCandidato.isEmpty()){
+                candidato = listCandidato.get(0);
+            }   
+        } catch (Exception e) {
+            throw  e;
+        }
+        return candidato;
+    } 
     
 }

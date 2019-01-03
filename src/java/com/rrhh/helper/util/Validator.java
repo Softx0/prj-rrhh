@@ -43,7 +43,7 @@ public class Validator implements Serializable {
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "La cedula no es valida", null));
         }
 
-        if (!candidatoFacade.findCandidatoByCedula(cedula)) {
+        if (!candidatoFacade.findCandidatoCedula(cedula)) {
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "La cedula ya esta en uso", null));
         }
     }

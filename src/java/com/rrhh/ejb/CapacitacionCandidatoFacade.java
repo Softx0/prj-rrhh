@@ -5,10 +5,13 @@
  */
 package com.rrhh.ejb;
 
+import com.rrhh.domain.Candidatos;
 import com.rrhh.domain.CapacitacionCandidato;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +31,29 @@ public class CapacitacionCandidatoFacade extends AbstractFacade<CapacitacionCand
     public CapacitacionCandidatoFacade() {
         super(CapacitacionCandidato.class);
     }
-    
+
+    public CapacitacionCandidato CapacitacionCandidato(int id) {
+        CapacitacionCandidato capacitacionCandidato = null;
+        String consulta;
+
+        try {
+
+            consulta = "FROM CapacitacionCandidato u WHERE u.candidato = ?1";
+            Query query = em.createQuery(consulta);
+
+            query.setParameter(1, new Candidatos(id));
+
+            List<CapacitacionCandidato> listCapacitacionCandidato
+                    = query.getResultList();
+
+            if (!listCapacitacionCandidato.isEmpty()) {
+                capacitacionCandidato = listCapacitacionCandidato.get(0);
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return capacitacionCandidato;
+    }
+
 }

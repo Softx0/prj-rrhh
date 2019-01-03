@@ -5,10 +5,14 @@
  */
 package com.rrhh.ejb;
 
+import com.rrhh.domain.Candidatos;
+import com.rrhh.domain.IdiomaCandidato;
 import com.rrhh.domain.RecomendacionCandidato;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +32,28 @@ public class RecomendacionCandidatoFacade extends AbstractFacade<RecomendacionCa
     public RecomendacionCandidatoFacade() {
         super(RecomendacionCandidato.class);
     }
-    
+
+    public RecomendacionCandidato recomendacionCandidato(int id) {
+        RecomendacionCandidato recomendacionCandidato = null;
+        String consulta;
+
+        try {
+
+            consulta = "FROM recomendacion_candidato u WHERE u.candidato = ?1";
+            Query query = em.createQuery(consulta);
+
+            query.setParameter(1, new Candidatos(id));
+
+            List<RecomendacionCandidato> listRecomendacionCandidato = query.getResultList();
+
+            if (!listRecomendacionCandidato.isEmpty()) {
+                recomendacionCandidato = listRecomendacionCandidato.get(0);
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return recomendacionCandidato;
+    }
+
 }
