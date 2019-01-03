@@ -9,6 +9,7 @@ import com.rrhh.domain.Usuario;
 import com.rrhh.helper.util.JsfUtil;
 import com.rrhh.helper.util.SessionReference;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
@@ -18,7 +19,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "aduanaController")
 @ViewScoped
-public class AduanaController {
+public class AduanaController implements Serializable{
 
     SessionReference sessionReference;
     Usuario usuario;
