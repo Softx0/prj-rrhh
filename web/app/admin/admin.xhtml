@@ -5,8 +5,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        
-        <f:event type="preRenderView" listener="#{aduanaController.onlyAdmin()}"/>
+
+        f:event type="preRenderView" listener="#{aduanaController.onlyAdmin()}"/>
+        <f:event type="preRenderView" listener="#{usuarioSesion.datosUser()}"/>
         <meta charset="utf-8" />
         <title>RRHH - Admin</title>
         <meta charset="utf-8"/>
@@ -36,7 +37,7 @@
         <link rel="stylesheet" href="../../resources/index/css/custom.css"/>
         <!-- Favicon-->
         <link rel="shortcut icon" href="../../resources/index/img/favicon.png"/>
-        
+
 
     </h:head>
     <h:body>
@@ -51,7 +52,7 @@
                         <!--
                         <img src="img/avatar-7.jpg" alt="person" class="img-fluid rounded-circle"/>
                         -->
-                        <h2 class="h5">Nathan Andrews</h2><span>Web Developer</span>
+                        <h2 class="h5"><h:outputText value="#{usuarioSesion.usuario.email}"/></h2><span>Web Developer</span>
                     </div>
                     <!-- Small Brand information, appears on minimized sidebar-->
                     <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> 
@@ -153,7 +154,7 @@
                             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
 
                                 <!-- Log out-->
-                                <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline-block">Cerrar Sesion</span><i class="fa fa-sign-out"></i></a></li>
+                                <li class="nav-item"><a href="login.html" class="nav-link logout"><h:commandLink class="d-none d-sm-inline-block" actionListener="#{aduanaController.logOut()}" value="Cerrar Sesion"/><i class="fa fa-sign-out"></i><{controlAccesoClass.cerraSesion()/a></li>
                             </ul>
                         </div>
                     </div>

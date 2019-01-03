@@ -26,7 +26,6 @@ public class LoginController {
     /**
      * Creates a new instance of LoginController
      */
-    
     @Inject
     private UsuarioFacade usuarioFacade;
 
@@ -63,18 +62,19 @@ public class LoginController {
 
                 case "ADMIN":
                     sessionReference.sessionMapPut("usuario", user);
-                    sessionReference.getFacesContext().getExternalContext()
-                            .redirect("../admin/index/adminDash/indexAdmin.xhtml");
+                    sessionReference.getFacesContext()
+                            .getExternalContext()
+                            .redirect("../admin/index.xhtml");
                     break;
 
                 case "EMPLEADO":
                     sessionReference.sessionMapPut("usuario", user);
-                    sessionReference.navigationHandlerRedirect("/view/empleado/indexEmpleado");
+                    sessionReference.navigationHandlerRedirect("/app/empleado/index");
                     break;
 
                 case "CANDIDATO":
                     sessionReference.sessionMapPut("usuario", user);
-                    sessionReference.navigationHandlerRedirect("/view/postulante/indexPostulante");
+                    sessionReference.navigationHandlerRedirect("/app/candidato/index");
                     break;
 
                 default:
@@ -86,7 +86,7 @@ public class LoginController {
         } catch (IOException e) {
             sessionReference.getFacesContext()
                     .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                            "Credenciales incorrectas", "error"));
+                            "Credenciales incorrectas" + e, "error"));
         }
     }
 
