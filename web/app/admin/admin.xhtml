@@ -2,8 +2,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        
+        <f:event type="preRenderView" listener="#{aduanaController.onlyAdmin()}"/>
         <meta charset="utf-8" />
         <title>RRHH - Admin</title>
         <meta charset="utf-8"/>
@@ -14,26 +17,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
         <!-- Bootstrap CSS-->
-        <link rel="stylesheet" href="resources/index/css/bootstrap.css"/>
-        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <link rel="stylesheet" href="../../resources/index/css/bootstrap.css"/>
         <!-- Font Awesome CSS-->
-        <link rel="stylesheet" href="resources/index/vendors/font-awesome/css/font-awesome.min.css"/>
-        <link rel="stylesheet" href="resources/index/vendors/font-awesome/css/font-awesome.css"/>
-        <link rel="stylesheet" href="resources/index/vendors/flaticon/flaticon.css"/>
+        <link rel="stylesheet" href="../../resources/index/vendors/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="../../resources/index/vendors/font-awesome/css/font-awesome.css"/>
+        <link rel="stylesheet" href="../../resources/index/vendors/flaticon/flaticon.css"/>
         <!-- Fontastic Custom icon font-->
-        <link rel="stylesheet" href="resources/index/css/fontastic.css"/>
+        <link rel="stylesheet" href="../../resources/index/css/fontastic.css"/>
         <!-- Google fonts - Roboto -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
         <!-- jQuery Circle-->
-        <link rel="stylesheet" href="resources/index/css/grasp_mobile_progress_circle-1.0.0.min.css"/>
+        <link rel="stylesheet" href="../../resources/index/css/grasp_mobile_progress_circle-1.0.0.min.css"/>
         <!-- Custom Scrollbar-->
-        <link rel="stylesheet" href="resources/index/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css"/>
+        <link rel="stylesheet" href="../../resources/index/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css"/>
         <!-- theme stylesheet-->
-        <link rel="stylesheet" href="resources/index/css/style.default.css" id="theme-stylesheet"/>
+        <link rel="stylesheet" href="../../resources/index/css/style.default.css" id="theme-stylesheet"/>
         <!-- Custom stylesheet - for your changes-->
-        <link rel="stylesheet" href="resources/index/css/custom.css"/>
+        <link rel="stylesheet" href="../../resources/index/css/custom.css"/>
         <!-- Favicon-->
-        <link rel="shortcut icon" href="resources/index/img/favicon.png"/>
+        <link rel="shortcut icon" href="../../resources/index/img/favicon.png"/>
+        
 
     </h:head>
     <h:body>
@@ -41,7 +44,7 @@
         <!-- Side Navbar -->
         <nav class="side-navbar">
             <div class="side-navbar-wrapper">
-                <!-- Sidebar Header-->
+                <!-- Sidebar Header    -->
                 <div class="sidenav-header d-flex align-items-center justify-content-center">
                     <!-- User Info-->
                     <div class="sidenav-header-inner text-center">
@@ -157,9 +160,11 @@
                 </nav>
             </header>
 
+
             <ui:insert name="body">
                 Defualt body Admin
             </ui:insert>
+
 
             <footer class="main-footer">
                 <div class="container-fluid">
@@ -177,18 +182,18 @@
         </div>
 
         <!-- JavaScript files-->
-        <script src="resources/index/vendors/jquery.cookie/jquery.cookie.js"></script>
-        <script src="resources/index/vendors/chart.js/Chart.min.js"></script>
-        <script src="resources/index/vendors/jquery-validation/jquery.validate.min.js"></script>
-        <script src="resources/index/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="resources/index/vendors/jquery.min.js"></script>
-        <script src="resources/index/vendors/popper.min.js"></script>
-        <script src="resources/index/js/bootstrap.min.js"></script>
-        <script src="resources/index/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
-        <script src="resources/index/vendors/chart.js/"></script>
-        <script src="resources/index/js/charts-home.js"></script>
+        <script src="../../resources/index/vendors/jquery.cookie/jquery.cookie.js"></script>
+        <script src="../../resources/index/vendors/chart.js/Chart.min.js"></script>
+        <script src="../../resources/index/vendors/jquery-validation/jquery.validate.min.js"></script>
+        <script src="../../resources/index/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="../../resources/index/vendors/jquery.min.js"></script>
+        <script src="../../resources/index/vendors/popper.min.js"></script>
+        <script src="../../resources/index/js/bootstrap.min.js"></script>
+        <script src="../../resources/index/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
+        <script src="../../resources/index/vendors/chart.js/"></script>
+        <script src="../../resources/index/js/charts-home.js"></script>
         <!-- Main File-->
-        <script src="resources/index/js/front.js"></script>
+        <script src="../../resources/index/js/front.js"></script>
 
     </h:body>
 </html>
