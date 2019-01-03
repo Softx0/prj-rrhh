@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCapacitacionCandidatoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCapacitacionCandidatoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{capacitacionCandidatoController.selected.id}" title="#{bundle.CreateCapacitacionCandidatoTitle_id}" required="true" requiredMessage="#{bundle.CreateCapacitacionCandidatoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateCapacitacionCandidatoLabel_capacitacion}" for="capacitacion" />
+                    <h:selectOneMenu id="capacitacion" value="#{capacitacionCandidatoController.selected.capacitacion}" title="#{bundle.CreateCapacitacionCandidatoTitle_capacitacion}" >
+                        <f:selectItems value="#{capacitacionesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCapacitacionCandidatoLabel_candidato}" for="candidato" />
+                    <h:selectOneMenu id="candidato" value="#{capacitacionCandidatoController.selected.candidato}" title="#{bundle.CreateCapacitacionCandidatoTitle_candidato}" >
+                        <f:selectItems value="#{candidatosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{capacitacionCandidatoController.create}" value="#{bundle.CreateCapacitacionCandidatoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{capacitacionCandidatoController.prepareList}" value="#{bundle.CreateCapacitacionCandidatoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCapacitacionCandidatoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
