@@ -6,7 +6,7 @@
     <h:head>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
-        <link rel="icon" href="resources/index/img/favicon.png" type="image/png" />
+        <link rel="icon" href="resources/index/img/favicon.ico" type="image/png" />
 
         <title>RRHH - Index</title>
         
@@ -50,7 +50,8 @@
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                             <ul class="nav navbar-nav menu_nav ml-auto">
                                 <li class="nav-item active"><a class="nav-link" href="index.xhtml">Home</a></li> 
-                                <li class="nav-item"><a class="nav-link" href="app/account/login.xhtml">Login</a></li> 
+                                <li class="nav-item"><h:link class="nav-link" outcome="/app/account/login" value="Login"/></li> 
+                                <li class="nav-item"><h:link class="nav-link" outcome="/app/formulario/formularioAplicar" value="Formulario de Reclutamiento"/></li> 
                                 <li class="nav-item"><a class="nav-link" href="#">Sobre Mi</a></li>   
                             </ul>
                         </div> 

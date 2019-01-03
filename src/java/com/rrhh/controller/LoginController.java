@@ -9,6 +9,7 @@ import com.rrhh.domain.Usuario;
 import com.rrhh.ejb.UsuarioFacade;
 import com.rrhh.helper.util.SessionReference;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -21,7 +22,7 @@ import javax.inject.Inject;
  */
 @Named(value = "loginController")
 @RequestScoped
-public class LoginController {
+public class LoginController implements Serializable{
 
     /**
      * Creates a new instance of LoginController
@@ -58,7 +59,7 @@ public class LoginController {
             sessionReference = new SessionReference();
             user = usuarioFacade.credenciales(usuario);
 
-            switch (usuario.getTipoUsuario().getDescripcion()) {
+            switch (user.getTipoUsuario().getDescripcion()) {
 
                 case "ADMIN":
                     sessionReference.sessionMapPut("usuario", user);

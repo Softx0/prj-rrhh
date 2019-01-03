@@ -36,7 +36,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         String consulta;
 
         try {
-            consulta = "FROM Usuario u WHERE u.email = ?1 and u.password  = ?2";
+            consulta = "FROM usuario u WHERE u.email = ?1 and u.password  = ?2";
             Query query = em.createQuery(consulta);
             query.setParameter(1, usuario.getEmail());
             query.setParameter(2, usuario.getPassword());
@@ -48,7 +48,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
             }
 
         } catch (Exception e) {
-            throw e;
+            System.out.println("Ha ocurrido un error" + e);
         }
         return user;
     }

@@ -55,11 +55,10 @@
                             </div>
 
                             <div class="form-group-material">
-                                <p:password id="login-password" feedback="true" 
-                                            value="#{loginController.usuario.password}" inline="true"
+                                <h:inputSecret id="login-password"
+                                            value="#{loginController.usuario.password}" 
                                             required="true" requiredMessage="Este campo es requerido" 
-                                            class="input-material" promptLabel="La Contraseña debe ser fuerte!" 
-                                            weakLabel="Eso no sirve" goodLabel=" Mas o menos" strongLabel="Me Gusta" />
+                                            class="input-material"  />
                                 <label for="login-password" class="label-material">Password</label>
                             </div>
 
