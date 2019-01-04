@@ -56,24 +56,25 @@ public class LoginController implements Serializable{
         Usuario user;
 
         try {
+            
             sessionReference = new SessionReference();
             user = usuarioFacade.credenciales(usuario);
 
-            switch (user.getTipoUsuario().getDescripcion()) {
+            switch (user.getTipoUsuario().getId()) {
 
-                case "ADMIN":
+                case 1:
                     sessionReference.sessionMapPut("usuario", user);
                     sessionReference.getFacesContext()
                             .getExternalContext()
                             .redirect("../admin/index.xhtml");
                     break;
 
-                case "EMPLEADO":
+                case 2:
                     sessionReference.sessionMapPut("usuario", user);
                     sessionReference.navigationHandlerRedirect("/app/empleado/index");
                     break;
 
-                case "CANDIDATO":
+                case 3:
                     sessionReference.sessionMapPut("usuario", user);
                     sessionReference.navigationHandlerRedirect("/app/candidato/index");
                     break;
@@ -84,7 +85,7 @@ public class LoginController implements Serializable{
                                     "Credenciales incorrectas", "error"));
                     break;
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             sessionReference.getFacesContext()
                     .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                             "Credenciales incorrectas" + e, "error"));

@@ -38,7 +38,7 @@ public class CapacitacionCandidatoFacade extends AbstractFacade<CapacitacionCand
 
         try {
 
-            consulta = "FROM CapacitacionCandidato u WHERE u.candidato = ?1";
+            consulta = "FROM capacitacion_candidato u WHERE u.candidato = ?1";
             Query query = em.createQuery(consulta);
 
             query.setParameter(1, new Candidatos(id));

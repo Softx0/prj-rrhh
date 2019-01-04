@@ -35,22 +35,22 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                             <ul class="nav navbar-nav menu_nav ml-auto">
-                                
+
                                 <li class="nav-item active">
                                     <a class="nav-link" href="../../index.xhtml">Home</a>
                                 </li> 
-                                
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="../account/login.xhtml">Login</a>
                                 </li>
-                                
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html">Sobre Mi</a>
                                 </li>
-                                
+
                             </ul>
                         </div> 
-                        
+
                     </div>
                 </nav>
             </div>
@@ -60,11 +60,12 @@
         <br/>
         <br/>
 
-        <h:panelGroup id="messagePanel" layout="block">
-            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-        </h:panelGroup>
+
 
         <main class="container">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
             <h:form>
 
                 <div class="container">
@@ -83,14 +84,14 @@
 
                                 <div class="form-group col-md-4">
                                     <h:outputLabel value="Cedula:" for="cedula" />
-                                    <p:inputMask id="cedula" mask="999-9999999-9" 
+                                    <h:inputText id="cedula"  
                                                  onkeypress="return isNumberKey(event, this)" 
-                                                 placeholder="001-0407056-0" maxlength="11" 
+                                                 p:placeholder="001-0407056-0" maxlength="11" 
                                                  validator="#{validator.validarCedula}" class="form-control"
                                                  value="#{formController.candidato.cedula}"
                                                  required="true" requiredMessage="La Cedula no es valida">
                                         <f:ajax event="blur" execute="@this" render="cedulaError"/>
-                                    </p:inputMask>
+                                    </h:inputText>
                                     <h:message  id="message" for="cedulaError" />
                                 </div>
 
@@ -139,7 +140,7 @@
                                     <h:outputText id="display" />
                                 </div>
                             </div>
-                            
+
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <h:outputLabel value="Idiomas" for="idioma" />
@@ -298,7 +299,7 @@
                                                  class="form-control" placeholder="Organizacion X" />
                                 </div>
                             </div>
-                            
+
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <h:outputLabel value="Puesto" for="puesto" />
@@ -318,27 +319,22 @@
                             <br/>
 
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
 
                                     <h:outputLabel value="Repita el correo" for="email1" />
                                     <p:inputText id="email1" value="#{formController.usuario.email}"
                                                  placeholder="johndoe@email.com" class="form-control" />
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
                                     <h:outputLabel value="Contraseña" for="password" />
                                     <p:password id="password" value="#{formController.usuario.password}" 
                                                 placeholder="***************" inline="true" feedback="true"
                                                 promptLabel="La Contraseña debe ser fuerte!" class="form-control" 
                                                 weakLabel="Eso no sirve" goodLabel=" Mas o menos" strongLabel="Me Gusta" />
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <h:outputLabel value="Repite la Contraseña" for="password1" />
-                                    <p:password id="password1" 
-                                                placeholder="***************" match="password" class="form-control" />
-                                </div>
                             </div>
 
-                            <h:commandButton actionListener="#{formController.aplicar}" type="submit" class="btn btn-primary" value="Enviar Formulario" id="btnReclutamiento"/>
+                            <h:commandButton actionListener="#{formController.Aplicar()}" class="btn btn-primary" value="Enviar Formulario" id="Aplicar"/>
                             <br/>
 
                         </div>

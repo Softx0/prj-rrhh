@@ -57,22 +57,12 @@ public class FormController implements Serializable {
     IdiomaCandidato idiomaCandidato;
     RecomendacionCandidato recomendacionCandidato;
 
-//    Capacitaciones capacitacionesList[];
     Competencias competenciasList[];
-//    ExperienciaLaboral experienciaLaboralList[];
     Idiomas idiomasList[];
-//    Recomendacion recomendacionesList[];
     Capacitaciones capacitacionesList;
-//    Competencias competenciasList;
     ExperienciaLaboral experienciaLaboralList;
-//   Idiomas idiomasList;
     Recomendacion recomendacionesList;
 
-//    Escrito escrito;
-//    EstadoCivil estadoCivil;
-//    Hablado hablado;
-//    NivelAcademico nivelAcademico;
-//    Puestos puesto;
     Usuario usuario;
     String emailUsuario;
 
@@ -153,6 +143,9 @@ public class FormController implements Serializable {
     }
 
     public Capacitaciones getCapacitacionesList() {
+        if (capacitacionesList == null) {
+            capacitacionesList = new Capacitaciones();
+        }
         return capacitacionesList;
     }
 
@@ -169,6 +162,9 @@ public class FormController implements Serializable {
     }
 
     public ExperienciaLaboral getExperienciaLaboralList() {
+        if (experienciaLaboralList == null) {
+            experienciaLaboralList = new ExperienciaLaboral();
+        }
         return experienciaLaboralList;
     }
 
@@ -185,6 +181,9 @@ public class FormController implements Serializable {
     }
 
     public Recomendacion getRecomendacionesList() {
+        if (recomendacionesList == null) {
+            recomendacionesList = new Recomendacion();
+        }
         return recomendacionesList;
     }
 
@@ -192,45 +191,6 @@ public class FormController implements Serializable {
         this.recomendacionesList = recomendacionesList;
     }
 
-//    public Escrito getEscrito() {
-//        return escrito;
-//    }
-//
-//    public void setEscrito(Escrito escrito) {
-//        this.escrito = escrito;
-//    }
-//
-//    public EstadoCivil getEstadoCivil() {
-//        return estadoCivil;
-//    }
-//
-//    public void setEstadoCivil(EstadoCivil estadoCivil) {
-//        this.estadoCivil = estadoCivil;
-//    }
-//
-//    public Hablado getHablado() {
-//        return hablado;
-//    }
-//
-//    public void setHablado(Hablado hablado) {
-//        this.hablado = hablado;
-//    }
-//
-//    public NivelAcademico getNivelAcademico() {
-//        return nivelAcademico;
-//    }
-//
-//    public void setNivelAcademico(NivelAcademico nivelAcademico) {
-//        this.nivelAcademico = nivelAcademico;
-//    }
-//
-//    public Puestos getPuesto() {
-//        return puesto;
-//    }
-//
-//    public void setPuesto(Puestos puesto) {
-//        this.puesto = puesto;
-//    }
     public Usuario getUsuario() {
         if (usuario == null) {
             usuario = new Usuario();
@@ -290,7 +250,8 @@ public class FormController implements Serializable {
             usuario.setTipoUsuario(new TipoUsuario(3));
             usuarioFacade.create(usuario);
 
-            JsfUtil.addSuccessMessage("Formulario enviado con Exito!!!");
+            JsfUtil.addSuccessMessage("Formulario enviado con Exito!!!\n"
+                    + "Logeate porfavor!");
 
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, "El candidato no fue creado!" + e);

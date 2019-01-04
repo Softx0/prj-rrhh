@@ -50,7 +50,8 @@
                         <h:form class="text-left form-validate">
 
                             <div class="form-group-material">
-                                <h:inputText id="login-username" value="#{loginController.usuario.email}" required="true" requiredMessage="Campo Requerido" class="input-material" />
+                                <h:inputText id="login-username" value="#{loginController.usuario.email}" 
+                                             required="true" requiredMessage="Campo Requerido" class="input-material" />
                                 <label for="login-username" class="label-material">Correo</label>
                             </div>
 
@@ -63,7 +64,7 @@
                             </div>
 
                             <div class="form-group text-center">
-                                <h:commandLink action="#{loginController.iniciarSesion}" class="btn btn-primary" value="Login" />
+                                <h:commandLink action="#{loginController.iniciarSesion()}" class="btn btn-primary" value="Login" />
                             </div>
                         </h:form>
 
